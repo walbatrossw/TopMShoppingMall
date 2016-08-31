@@ -1,0 +1,207 @@
+Eclipse Name : TopMShoppingMall
+DB Name : MShop
+DB ID : TOP
+DB PW : 1234
+
+tomcat : 7 or 8?
+
+layout : Bootstrap 사용
+------------------------------------------------------------------------
+Table 
+회원관리 : top_member
+(m_id, m_pw, m_name, m_level, m_addr, m_age, m_phone, m_email)
+
+CREATE TABLE TOP_MEMBER 
+(
+  M_ID VARCHAR2(20) NOT NULL 
+, M_PW VARCHAR2(20) NOT NULL 
+, M_NAME VARCHAR2(20) NOT NULL 
+, M_LEVEL INT NOT NULL 
+, M_ADDR VARCHAR2(20) NOT NULL 
+, M_AGE INT NOT NULL 
+, M_PHONE VARCHAR2(20) NOT NULL 
+, M_EMAIL VARCHAR2(20) NOT NULL 
+, CONSTRAINT TOP_MEMBER_PK PRIMARY KEY 
+  (
+    M_ID 
+  )
+  ENABLE 
+);
+-----------------------------------------------------------------------
+상품 : top_product
+(p_code, p_cate, p_name, p_price, p_count, p_date, p_detail, m_id(판) )
+
+CREATE TABLE TOP_PRODUCT 
+(
+  P_CODE VARCHAR2(20) NOT NULL 
+, P_CATE VARCHAR2(20) NOT NULL 
+, P_NAME VARCHAR2(20) NOT NULL 
+, P_PRICE INT NOT NULL 
+, P_COUNT INT NOT NULL 
+, P_DATE DATE NOT NULL 
+, P_DETAIL VARCHAR2(500) NOT NULL 
+, M_ID VARCHAR2(20) NOT NULL 
+, CONSTRAINT TOP_PRODUCT_PK PRIMARY KEY 
+  (
+    P_CODE 
+  )
+  ENABLE 
+);
+
+ALTER TABLE TOP_PRODUCT
+ADD CONSTRAINT TOP_PRODUCT_FK1 FOREIGN KEY
+(
+  M_ID 
+)
+REFERENCES TOP_MEMBER
+(
+  M_ID 
+)
+ENABLE;
+------------------------------------------------------------------------
+
+주문 : top_order
+(o_code, p_code, m_id(구), o_date, o_price(최종결제예정금액), o_quantity, o_state, o_addr)
+
+CREATE TABLE TOP_ORDER 
+(
+  O_CODE VARCHAR2(20) NOT NULL 
+, P_CODE VARCHAR2(20) NOT NULL 
+, M_ID VARCHAR2(20) NOT NULL 
+, O_DATE DATE NOT NULL 
+, O_PRICE INT NOT NULL 
+, O_QUANTITY INT NOT NULL 
+, O_STATE INT NOT NULL 
+, O_ADDR VARCHAR2(20) NOT NULL 
+, CONSTRAINT TOP_ORDER_PK PRIMARY KEY 
+  (
+    O_CODE 
+  )
+  ENABLE 
+);
+
+ALTER TABLE TOP_ORDER
+ADD CONSTRAINT TOP_ORDER_FK1 FOREIGN KEY
+(
+  P_CODE 
+)
+REFERENCES TOP_PRODUCT
+(
+  P_CODE 
+)
+ENABLE;
+
+ALTER TABLE TOP_ORDER
+ADD CONSTRAINT TOP_ORDER_FK2 FOREIGN KEY
+(
+  M_ID 
+)
+REFERENCES TOP_MEMBER
+(
+  M_ID 
+)
+ENABLE;
+
+------------------------------------------------------------------------
+장바구니 : top_bucket
+(b_code, p_code, p_name, p_price, m_id(구) )
+
+CREATE TABLE TOP_BUCKET 
+(
+  B_CODE VARCHAR2(20) NOT NULL 
+, P_CODE VARCHAR2(20) NOT NULL 
+, P_NAME VARCHAR2(20) NOT NULL 
+, P_PRICE VARCHAR2(20) NOT NULL 
+, M_ID VARCHAR2(20) NOT NULL 
+, CONSTRAINT TOP_BUCKET_PK PRIMARY KEY 
+  (
+    B_CODE 
+  )
+  ENABLE 
+);
+
+ALTER TABLE TOP_BUCKET
+ADD CONSTRAINT TOP_BUCKET_FK1 FOREIGN KEY
+(
+  P_CODE 
+)
+REFERENCES TOP_PRODUCT
+(
+  P_CODE 
+)
+ENABLE;
+
+ALTER TABLE TOP_BUCKET
+ADD CONSTRAINT TOP_BUCKET_FK2 FOREIGN KEY
+(
+  M_ID 
+)
+REFERENCES TOP_MEMBER
+(
+  M_ID 
+)
+ENABLE;
+
+
+------------------------------------------------------------------------
+
+게시판
+Board 
+게시판1 : 관리자(관리자공지)
+게시판2 : 판매자(판매자공지)
+게시판3 : 구매자(Q&A)
+------------------------------------------------------------------------
+관리자 공지테이블
+admin_notice
+
+CREATE TABLE admin_notice(
+	BOARD_NUM NUMBER,
+	BOARD_NAME VARCHAR2(20),
+	BOARD_PASS VARCHAR2(15),
+	BOARD_SUBJECT VARCHAR2(50),
+	BOARD_CONTENT VARCHAR2(2000),
+	BOARD_RE_REF NUMBER,
+	BOARD_RE_LEV NUMBER,
+	BOARD_RE_SEQ NUMBER,
+	BOARD_READCOUNT NUMBER,
+	BOARD_DATE DATE,
+	PRIMARY KEY(BOARD_NUM)
+);
+------------------------------------------------------------------------
+
+판매자 공지테이블
+
+seller_notice
+
+CREATE TABLE seller_notice(
+	BOARD_NUM NUMBER,
+	BOARD_NAME VARCHAR2(20),
+	BOARD_PASS VARCHAR2(15),
+	BOARD_SUBJECT VARCHAR2(50),
+	BOARD_CONTENT VARCHAR2(2000),
+	BOARD_RE_REF NUMBER,
+	BOARD_RE_LEV NUMBER,
+	BOARD_RE_SEQ NUMBER,
+	BOARD_READCOUNT NUMBER,
+	BOARD_DATE DATE,
+	PRIMARY KEY(BOARD_NUM)
+);
+
+------------------------------------------------------------------------
+구매자 문의테이블
+
+buyer_qna
+
+CREATE TABLE buyer_qna(
+	BOARD_NUM NUMBER,
+	BOARD_NAME VARCHAR2(20),
+	BOARD_PASS VARCHAR2(15),
+	BOARD_SUBJECT VARCHAR2(50),
+	BOARD_CONTENT VARCHAR2(2000),
+	BOARD_RE_REF NUMBER,
+	BOARD_RE_LEV NUMBER,
+	BOARD_RE_SEQ NUMBER,
+	BOARD_READCOUNT NUMBER,
+	BOARD_DATE DATE,
+	PRIMARY KEY(BOARD_NUM)
+);
