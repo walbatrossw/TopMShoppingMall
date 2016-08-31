@@ -60,7 +60,7 @@
                                	<%
                                	if(memberName == null){
                                	%>
-                                	<li><a href="<%=request.getContextPath() %>/member/login/memberLogin.jsp"><i class="pe-7s-lock"></i>로그인/회원가입</a></li>
+                                	<li><a href="${pageContext.request.contextPath}/Member/memberLogin.member"><i class="pe-7s-lock"></i>로그인/회원가입</a></li>
                                 <%
                                	}else{
                                	%>	

@@ -9,53 +9,62 @@ public class Member {
 	private int mAge = 0;
 	private String mPhone = null;
 	private String mEmail = null;
+	
 	public String getmId() {
 		return mId;
 	}
-	public void setmId(String mId) {
+	public Member setmId(String mId) {
 		this.mId = mId;
+		return this;
 	}
 	public String getmPw() {
 		return mPw;
 	}
-	public void setmPw(String mPw) {
+	public Member setmPw(String mPw) {
 		this.mPw = mPw;
+		return this;
 	}
 	public String getmName() {
 		return mName;
 	}
-	public void setmName(String mName) {
+	public Member setmName(String mName) {
 		this.mName = mName;
+		return this;
 	}
 	public int getmLevel() {
 		return mLevel;
 	}
-	public void setmLevel(int mLevel) {
+	public Member setmLevel(int mLevel) {
 		this.mLevel = mLevel;
+		return this;
 	}
 	public String getmAddr() {
 		return mAddr;
 	}
-	public void setmAddr(String mAddr) {
+	public Member setmAddr(String mAddr) {
 		this.mAddr = mAddr;
+		return this;
 	}
 	public int getmAge() {
 		return mAge;
 	}
-	public void setmAge(int mAge) {
+	public Member setmAge(int mAge) {
 		this.mAge = mAge;
+		return this;
 	}
 	public String getmPhone() {
 		return mPhone;
 	}
-	public void setmPhone(String mPhone) {
+	public Member setmPhone(String mPhone) {
 		this.mPhone = mPhone;
+		return this;
 	}
 	public String getmEmail() {
 		return mEmail;
 	}
-	public void setmEmail(String mEmail) {
+	public Member setmEmail(String mEmail) {
 		this.mEmail = mEmail;
+		return this;
 	}
 	
 	
