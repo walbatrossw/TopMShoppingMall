@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
  <!-- JQUERY -->
@@ -23,10 +23,10 @@
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
     </head>
-<%
+<%-- <%
 	String memberName = (String)session.getAttribute("memberName");
 	String level = (String)session.getAttribute("");
-%>
+%> --%>
     <body>
 
         <!-- PRELOADER -->
@@ -57,17 +57,12 @@
                                 <li><a href="#">Wishlist</a></li>
                                 <li><a href="#">Cart</a></li>
                                 <li><a href="#">Checkout</a></li>
-                               	<%
-                               	if(memberName == null){
-                               	%>
+                                <c:if test="${sessionScope.member == null }">                                             
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberLogin.member"><i class="pe-7s-lock"></i>로그인/회원가입</a></li>
-                                <%
-                               	}else{
-                               	%>	
-                               		<li><a href="<%=request.getContextPath() %>/member/login/memberLogout.jsp"><%=memberName%>님 로그인 / 로그아웃</a></li>
-                               	<%
-                               	}
-                                %>
+                                </c:if>
+                               	<c:if test="${sessionScope.member != null }">
+                               		<li><a href="${pageContext.request.contextPath}/member/login/memberLogout.jsp">${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
+                				</c:if>
                             </ul>
                         </div>
                     </div>
@@ -94,8 +89,8 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="<%=request.getContextPath()%>/main.jsp">Home</a></li>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">page</a></li>
-                            <li><a href="#">shop</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Boards/Admin/BoardInsert.bo">게시판</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Pin/productAddForm.product">상품관리</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Contact Us</a></li>
                         </ul>

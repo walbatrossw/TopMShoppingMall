@@ -27,7 +27,7 @@
 </script>
 <jsp:include page="/module/head.jsp"/>
 <div class="login">
-	<form id="LoginForm" action="${pageContext.request.contextPath}/member/login/memberLoginAction.jsp" method="post">	
+	<form id="LoginForm" action="${pageContext.request.contextPath}/Member/memberLoginPro.member" method="post">	
 		<div>
 			<input type="text" name="mId" id="memberId" class="text" placeholder="ID"/><br/>
 			<span id="idHelper"></span>

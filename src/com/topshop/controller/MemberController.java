@@ -66,6 +66,7 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Member/memberLoginPro.member")){
+			System.out.println("로그인 처리 MemberController.java");
 			//로그인 처리 액션
 			memberAction = new MemberLoginProAction();
 			try {

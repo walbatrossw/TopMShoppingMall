@@ -2,6 +2,7 @@ package com.topshop.memberaction;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.topshop.dao.MemberDao;
 import com.topshop.dto.Member;
@@ -12,7 +13,8 @@ public class MemberLoginProAction implements MActionInterFace{
 
 	@Override
 	public MemberForward action(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		//로그인 처리 액션
+		//입력 아이디랑 비밀번호를 받아옵니다.
 		String mId = request.getParameter("mId");
 		String mPw = request.getParameter("mPw");
 		
@@ -20,12 +22,18 @@ public class MemberLoginProAction implements MActionInterFace{
 		System.out.println(mPw + " <- mPw MemberLoginProAction.java");
 		
 		MemberDao memberDao = new MemberDao();
+		//로그인 체크 메서드 실행
 		String result = memberDao.memberLoginCheck(mId, mPw);
-		MemberForward memberForward = new MemberForward();
+		MemberForward forward = new MemberForward();
 		if(result.equals("로그인성공")){
+			System.out.println("성공");
 			Member member = new Member();
 			member = memberDao.memberLogin(mId);
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);
 			
+			forward.setRedirect(true);
+			forward.setPath(request.getContextPath() + "/main.jsp");
 			
 		}else if(result.equals("비밀번호불일치")){
 			
@@ -34,7 +42,7 @@ public class MemberLoginProAction implements MActionInterFace{
 		}
 		
 		
-		return null;
+		return forward;
 	}
 
 }

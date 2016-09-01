@@ -36,18 +36,19 @@ public class MemberDao {
 	public Member memberLogin(String mId) throws SQLException{
 		Member member = new Member();
 		PreparedStatement loginPstmt = null;
+		conn=ds.getConnection();
 		
-		String loginSql = "SELECT member_no, member_id, member_name FROM member WHERE member_id=?";
-		loginPstmt = conn.prepareStatement(loginSql);
-		loginPstmt.setString(1, mId);
+		String loginSql = "SELECT m_id, m_name, m_level FROM top_member WHERE m_id=?";
+		pstmt = conn.prepareStatement(loginSql);
+		pstmt.setString(1, mId);
 		
-		rs = loginPstmt.executeQuery();
-		System.out.println(loginPstmt);
+		rs = pstmt.executeQuery();
+		System.out.println(pstmt);
 		
 		if(rs.next()){
 			member.setmId((rs.getString("m_id")));
 			member.setmName((rs.getString("m_name")));
-			member.setmLevel((rs.getInt("member_level")));
+			member.setmLevel((rs.getInt("m_level")));
 		}
 		
 		return member;
@@ -60,28 +61,28 @@ public class MemberDao {
 		
 		try {
 			conn=ds.getConnection();
-			String loginSql = "SELECT m_id, m_level, m_name FROM top_member WHERE member_id=? AND member_pw=?";
+			String loginSql = "SELECT m_id, m_pw, m_level, m_name FROM top_member WHERE m_id=? AND m_pw=?";
 			pstmt = conn.prepareStatement(loginSql);
 			pstmt.setString(1, mId);
+			pstmt.setString(2, mPw);
+			
 			
 			rs = pstmt.executeQuery();
 			System.out.println(pstmt);
 			
 			if(rs.next()){
-				if(rs.next()){
 					
-					if(rs.getString("member_pw").equals(mPw)){
-						result = "로그인성공";
-					}else{
-						result = "비밀번호불일치";
-					}
+				if(rs.getString("m_pw").equals(mPw)){
+					result = "로그인성공";
+				}else{
+					result = "비밀번호불일치";
+				}
 					
 				}else{
 					result = "아이디불일치";
 				}
 				
-				return result;
-			}
+			return result;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
