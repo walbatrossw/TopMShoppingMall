@@ -192,6 +192,7 @@ public class BoardDAO {
 		}
 		return x;
 	}
+	
 	//04 게시글 상세보기
 	public Board getDetail(int num) throws Exception {
 
@@ -242,7 +243,7 @@ public class BoardDAO {
 	//05 조회수 업데이트
 	public void setReadCountUpdate(int num) throws Exception{
 			
-			String sql="update ksmart_board set BOARD_READCOUNT = "+
+			String sql="update ADMIN_NOTICE set BOARD_READCOUNT = "+
 				"BOARD_READCOUNT+1 where BOARD_NUM = "+num;
 			
 			try{
@@ -260,5 +261,56 @@ public class BoardDAO {
 				catch(Exception ex){}
 			
 		}
-	}		
+	}
+	
+	//06 게시글 수정
+	public boolean boardModify(Board modifyboard) throws Exception{
+		
+		String sql="update ADMIN_NOTICE set BOARD_SUBJECT=?,BOARD_CONTENT=? where BOARD_NUM=?";
+		
+		try{
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, modifyboard.getBOARD_SUBJECT());
+			preparedStatement.setString(2, modifyboard.getBOARD_CONTENT());
+			preparedStatement.setInt(3, modifyboard.getBOARD_NUM());
+			preparedStatement.executeUpdate();
+			return true;
+		}catch(Exception ex){
+			System.out.println("boardModify 에러 : " + ex);
+		}finally{
+			if(resultSet!=null)try{resultSet.close();}catch(SQLException ex){}
+			if(preparedStatement!=null)try{preparedStatement.close();}catch(SQLException ex){}
+			if(connection!=null) try{connection.close();}catch(SQLException ex){}
+			}
+		return false;
+	}
+	//07 게시글 삭제
+	//08 게시글 댓글
+	
+	//09 게시글 글쓴이 확인
+	public boolean isBoardWriter(int num,String pass){
+		String board_sql="select * from ADMIN_NOTICE where BOARD_NUM=?";
+		try{
+			connection = dataSource.getConnection();
+			preparedStatement=connection.prepareStatement(board_sql);
+			preparedStatement.setInt(1, num);
+			resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+				
+			if(pass.equals(resultSet.getString("BOARD_PASS"))){
+					return true;
+			}
+		} catch(SQLException ex) {
+				System.out.println("isBoardWriter 에러 : "+ex);
+		} finally {
+			try{
+			if(preparedStatement!=null)preparedStatement.close();
+			if(connection!=null) connection.close();
+			}catch(Exception ex){
+					
+			}
+		}
+			return false;
+		}
 }

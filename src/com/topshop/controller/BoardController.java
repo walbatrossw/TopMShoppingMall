@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.topshop.boardadminaction.BoardDetailAction;
 import com.topshop.boardadminaction.BoardInsertProAction;
 import com.topshop.boardadminaction.BoardListAction;
+import com.topshop.boardadminaction.BoardModifyAction;
+import com.topshop.boardadminaction.BoardModifyView;
 import com.topshop.forward.BoardActionForward;
 import com.topshop.inter.BoardActionInterface;
 
@@ -77,6 +79,23 @@ public class BoardController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
+		}else if(command.equals("/Boards/Admin/BoardModifyView.bo")){
+			System.out.println("03_05 조건문내(게시글수정화면) /Board/Admin/BoardModifyView.bo IN BoardController.java");
+			action = new BoardModifyView();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		
+		}else if(command.equals("/Boards/Admin/BoardModifyAction.bo")){
+			System.out.println("03_06 조건문내(게시글수정처리) /Board/Admin/BoardModifyAction IN BoardController.java");
+			action = new BoardModifyAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
 		

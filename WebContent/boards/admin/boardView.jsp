@@ -52,16 +52,17 @@
 	<tr align="center" valign="middle">
 		<td colspan="5">
 			<font size=2>
-			<a href="./BoardReplyView.bo?num=<%=board.getBOARD_NUM() %>">
+			<a href="<%=request.getContextPath()%>/Boards/Admin/BoardReplyView.bo?num=<%=board.getBOARD_NUM() %>">
 			[답변]
 			</a>&nbsp;&nbsp;
-			<a href="./BoardModify.bo?num=<%=board.getBOARD_NUM() %>">
+			<a href="<%=request.getContextPath()%>/Boards/Admin/BoardModifyView.bo?num=<%=board.getBOARD_NUM() %>">
 			[수정]
 			</a>&nbsp;&nbsp;
-			<a href="./BoardDelete.bo?num=<%=board.getBOARD_NUM() %>">
+			<a href="<%=request.getContextPath()%>/Boards/Admin/BoardDelete.bo?num=<%=board.getBOARD_NUM() %>">
 			[삭제]
 			</a>&nbsp;&nbsp;
-			<a href="<%=request.getContextPath()%>/Boards/Admin/BoardList.bo">[목록]</a>&nbsp;&nbsp;
+			<a href="<%=request.getContextPath()%>/Boards/Admin/BoardList.bo">
+			[목록]</a>&nbsp;&nbsp;
 			</font>
 		</td>
 	</tr>
