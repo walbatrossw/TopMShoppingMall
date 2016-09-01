@@ -8,7 +8,7 @@ import com.topshop.dto.Board;
 import com.topshop.forward.BoardActionForward;
 import com.topshop.inter.BoardActionInterface;
 
-public class InsertProAction implements BoardActionInterface {
+public class BoardInsertProAction implements BoardActionInterface {
 
 	@Override
 	public BoardActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

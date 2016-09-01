@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
 <div id="head">
 	<jsp:include page="/module/head.jsp"/>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 	<section>
 		<div class="container">
 			<form class="form-horizontal" action="<%=request.getContextPath()%>/Boards/Admin/InsertProAction.bo" method="post">
