@@ -33,9 +33,43 @@ public class MemberDao {
 	//-------------------------------------------------------------------------------
 	// 							로그인 처리 메서드
 	//-------------------------------------------------------------------------------
+	public ArrayList<Member> memberList(){
+		ArrayList<Member> memberList = new ArrayList<Member>();
+		try {
+			conn=ds.getConnection();
+			
+			String listSql = "SELECT * FROM top_member";
+			pstmt = conn.prepareStatement(listSql);
+			
+			rs = pstmt.executeQuery();
+			//회원리스트를 받아와 객체에 담아 리스트에 add
+			while(rs.next()){
+				Member member = new Member();
+				String mId = rs.getString("m_id");
+				String mName = rs.getString("m_name");
+				int mLevel = rs.getInt("m_level");
+				String mAddr = rs.getString("m_addr");
+				int mAge = rs.getInt("m_age");
+				String mPhone = rs.getString("m_phone");
+				String mEmail = rs.getString("m_email");
+				
+				member.setmId(mId).setmName(mName).setmLevel(mLevel).setmAddr(mAddr).setmAge(mAge).setmPhone(mPhone).setmEmail(mEmail);
+				
+				memberList.add(member);	
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		//리스트 리턴
+		return memberList;
+	}
+	//-------------------------------------------------------------------------------
+	// 							로그인 처리 메서드
+	//-------------------------------------------------------------------------------
 	public Member memberLogin(String mId) throws SQLException{
 		Member member = new Member();
-		PreparedStatement loginPstmt = null;
 		conn=ds.getConnection();
 		
 		String loginSql = "SELECT m_id, m_name, m_level FROM top_member WHERE m_id=?";

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.topshop.forward.MemberForward;
 import com.topshop.inter.MActionInterFace;
 import com.topshop.memberaction.MemberInsertProAction;
+import com.topshop.memberaction.MemberListProAction;
 import com.topshop.memberaction.MemberLoginProAction;
+import com.topshop.memberaction.MemberLogoutProAction;
 
 /**
  * Servlet implementation class MemberController
@@ -71,6 +73,25 @@ public class MemberController extends HttpServlet {
 			memberAction = new MemberLoginProAction();
 			try {
 				//로그인 처리
+				memberForward = memberAction.action(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Member/memberLogout.member")){
+			System.out.println("로그인 아웃 처리 MemberController.java");
+			//로그인 아웃처리 액션
+			memberAction = new MemberLogoutProAction();
+			try {
+				//로그인 처리
+				memberForward = memberAction.action(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Member/memberList.member")){
+			System.out.println("회원 리스트 MemberController.java");
+			//회원 리스트 액션
+			memberAction = new MemberListProAction();
+			try {
 				memberForward = memberAction.action(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();

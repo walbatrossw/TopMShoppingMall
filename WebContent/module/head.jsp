@@ -47,6 +47,9 @@
                             <ul class="nav nav-pills navbar-left">
                                 <li><a href="#"><i class="pe-7s-call"></i><span>063-000-0000</span></a></li>
                                 <li><a href="#"><i class="pe-7s-mail"></i><span> kji212@naver.com</span></a></li>
+                                <c:if test="${sessionScope.member.mLevel == 0 }">
+                                	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 회원관리</span></a></li>
+                                </c:if>
                             </ul>
                         </div>
                     </div>
@@ -61,7 +64,7 @@
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberLogin.member"><i class="pe-7s-lock"></i>로그인/회원가입</a></li>
                                 </c:if>
                                	<c:if test="${sessionScope.member != null }">
-                               		<li><a href="${pageContext.request.contextPath}/member/login/memberLogout.jsp">${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
+                               		<li><a href="${pageContext.request.contextPath}/Member/memberLogout.member">${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
                 				</c:if>
                             </ul>
                         </div>
