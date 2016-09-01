@@ -1,6 +1,6 @@
 package com.topshop.dto;
 
-public class Product {
+public class Product extends Member{
 	private String pCode = null;
 	private String pCate = null;
 	private String pName = null;

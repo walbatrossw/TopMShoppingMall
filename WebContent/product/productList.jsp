@@ -15,8 +15,14 @@
 		<table width="100%" border="1" class="table">
 			<thead>
 			<tr>
-				<th>상품코드</th><th>카테고리</th><th>상품명</th>
-				<th>가격</th><th>수량</th><th>등록일</th><th>상품상세설명</th><th>판매자아이디</th>
+				<th>상품코드</th>
+				<th>카테고리</th>
+				<th>상품명</th>
+				<th>가격</th>
+				<th>수량</th>
+				<th>판매자아이디</th>
+				<th>판매자이름</th>
+				<th>판매자연락처</th>
 				<c:if test="${member.mLevel==1 or member.mLevel==2}">
 				<th>수정</th><th>삭제</th>
 				</c:if>
@@ -31,9 +37,9 @@
 					</td>
 					<td>${product.pPrice}</td>
 					<td>${product.pCount}</td>
-					<td>${product.pDate}</td>
-					<td>${product.pDetail}</td>
 					<td>${product.mId}</td>
+					<td>${product.mName}</td>
+					<td>${product.mPhone}</td>
 				<c:if test="${member.mLevel==1 or member.mLevel==2}">
 					<td>
 						<a href=" ${pageContext.request.contextPath}/Pup/productUpdateForm.product?pCode=${product.pCode}">수정클릭</a>			

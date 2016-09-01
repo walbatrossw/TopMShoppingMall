@@ -71,11 +71,24 @@ public class ProductDAO {
 		conn.close();
 	}
 	//allselect
-	public  ArrayList<Product> allselect() throws SQLException,ClassNotFoundException{
+	public  ArrayList<Product> allselect(String mId) throws SQLException,ClassNotFoundException{
 		System.out.println("02 allselect Productdao.java");
 		conn=ds.getConnection();
-		pstmt = conn.prepareStatement(
-				"select * from TOP_PRODUCT");
+		if(mId != null){
+			pstmt = conn.prepareStatement(
+					"SELECT p.p_code as  p_code, p.p_cate as p_cate, p.p_name as p_name, p.p_price as p_price, "
+					+ "p.p_count as p_count, m.m_id as p_id, m.m_name as p_mname, m.m_phone as p_phone "
+					+ "FROM top_member m, top_product p "
+					+ "WHERE m.m_id = ? AND p.m_id = ?");
+			pstmt.setString(1, mId);
+			pstmt.setString(2, mId);
+		}else{
+			pstmt = conn.prepareStatement(
+					"SELECT p.p_code as  p_code, p.p_cate as p_cate, p.p_name as p_name, p.p_price as p_price, "
+					+ "p.p_count as p_count, m.m_id as p_id, m.m_name as p_mname, m.m_phone as p_phone "
+					+ "FROM top_member m, top_product p");
+		}
+		
 		System.out.println(pstmt);
 		rs = pstmt.executeQuery();
 		while(rs.next()){
@@ -83,12 +96,12 @@ public class ProductDAO {
 			System.out.println(product+"<--before goods allselect Gdao.java");
 			product.setpCode(rs.getString("p_code"));
 			product.setpName(rs.getString("p_name"));
-			product.setmId(rs.getString("m_id"));
+			product.setmId(rs.getString("p_id"));
 			product.setpCate(rs.getString("p_cate"));
-			product.setpDetail(rs.getString("p_Detail"));
 			product.setpPrice(rs.getInt("p_price"));
-			product.setpDate(rs.getString("p_date"));
 			product.setpCount(rs.getInt("p_count"));
+			product.setmName(rs.getString("p_mname"));
+			product.setmPhone(rs.getString("p_phone"));
 			
 			productArray.add(product);
 			System.out.println(product+"<--after allselect Productdao.java");
