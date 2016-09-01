@@ -50,6 +50,13 @@
                                 <c:if test="${sessionScope.member.mLevel == 0 }">
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 회원관리</span></a></li>
                                 </c:if>
+                                <c:if test="${sessionScope.member.mLevel == 1 }">
+                                	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>
+                                	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 상품등록</span></a></li>
+                                </c:if>
+                                <c:if test="${sessionScope.member.mLevel == 2 }">
+                                	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>                       
+                                </c:if>
                             </ul>
                         </div>
                     </div>
@@ -62,9 +69,9 @@
                                 <li><a href="#">Checkout</a></li>
                                 <c:if test="${sessionScope.member == null }">                                             
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberLogin.member"><i class="pe-7s-lock"></i>로그인/회원가입</a></li>
-                                </c:if>
-                               	<c:if test="${sessionScope.member != null }">
-                               		<li><a href="${pageContext.request.contextPath}/Member/memberLogout.member">${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
+                                </c:if>                           
+							 	<c:if test="${sessionScope.member != null }">
+                               		<li><a href="${pageContext.request.contextPath}/Member/memberLogout.member" >${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
                 				</c:if>
                             </ul>
                         </div>
@@ -92,8 +99,8 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="<%=request.getContextPath()%>/main.jsp">Home</a></li>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="${pageContext.request.contextPath}/Boards/Admin/BoardInsert.bo">게시판</a></li>
-                            <li><a href="${pageContext.request.contextPath}/Pin/productAddForm.product">상품관리</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Boards/Admin/BoardList.bo">게시판</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Plist/ProductList.product">상품관리</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Contact Us</a></li>
                         </ul>
@@ -120,5 +127,21 @@
 	            </div><!-- end of /.container -->
 	        </section><!-- end of /.news letter section -->
         </header>
+        <div class="modal fade" id="myModal" role="dialog">
+    		<div class="modal-dialog modal-sm">
+     			<div class="modal-content">
+       		 		<div class="modal-header">
+          				<button type="button" class="close" data-dismiss="modal">&times;</button>
+          				<h4 class="modal-title">로그아웃</h4>
+        			</div>
+       				<div class="modal-body">
+          				<p>로그아웃 되었습니다.</p>
+        			</div>
+        			<div class="modal-footer">
+          				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        			</div>
+      			</div>
+    		</div>
+  		</div>
         
        

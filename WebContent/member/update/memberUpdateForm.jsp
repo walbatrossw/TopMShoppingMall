@@ -35,12 +35,12 @@
 		});
 	});
 </script>
-<section class="memberInsert">
+<section class="memberUpdate">
 <div class="container">
 	<div class="row">
 		<!-- <div class="col-md-6"> -->
-		<h1>회원가입</h1>
-				<form class="form-horizontal" id="memberForm" action="${pageContext.request.contextPath}/Member/memberInsertAction.member" method="post">
+		<h1>회원정보 수정</h1>
+				<form class="form-horizontal" id="updateForm" action="${pageContext.request.contextPath}/Member/memberInsertAction.member" method="post">
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="id">I D : </label>
@@ -95,7 +95,7 @@
 					
 					<div class="form-group">
 						<!-- <input type="button" id="addBtn" value="회원등록"/> -->
-						<a id="addBtn" class="form-control">회원등록</a>
+						<a id="addBtn" class="form-control">회원수정</a>
 					</div>
 				</form>
 			</div>

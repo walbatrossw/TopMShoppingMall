@@ -151,7 +151,7 @@ h1,h2,h3,h4,h5,h6 {
     color: #01090c;
 }
 h1 {
-    font-size: 22px;
+    font-size: 36px;
 }
 h2 {
     font-size: 20px;
@@ -1563,27 +1563,42 @@ footer.footer p a{
 	margin-bottom: 20px;
 	background: url(../images/loginback.jpg);
 }
-
+.memberInsert, .memberUpdate{
+	width: 100%;
+	height: 80%;
+	text-align: center;
+	background: url(../images/loginback.jpg);
+}
+.memberInsert .form-group, .memberUpdate .form-group{
+	margin-left: 15%;
+	margin-bottom: 10px;
+}
+.memberInsert .form-group a, .memberUpdate .form-group a{
+	width: 150px;
+	margin-left: 30%;
+	background-color: #1abc9c;
+	color: white;
+}
+.memberInsert .form-group a:hover, .memberUpdate .form-group a:hover{
+	width: 150px;
+	margin-left: 30%;
+	background-color: #84BDB1;
+	color: white;
+}
 .login div{
 	margin-bottom: 20px;	
 }
-.login .text, .memberInsert .text {
+.login .text{
 	width: 300px;
 	height: 50px;
 }
-.login .btn, .memberInsert .btn{
+.login .btn, .memberInsert .btn, .memberUpdate .btn{
 	width: 150px;
 	background-color: #1abc9c;
 	color: white;
 }
-.memberInsert{
-	text-align: left;
-}
-.memberInsert label{
-	width: 50px;
-	height: 10px;
-}
-.memberInsert h2{
+
+/* .memberInsert h2{
 	font-size: 48px;
     text-transform: uppercase;
     font-weight: 300;
@@ -1597,6 +1612,6 @@ footer.footer p a{
 	font-size: 30px;
 	width: 50px;
 	height: 20px;
-}
+} */
 
 

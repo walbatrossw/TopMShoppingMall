@@ -2,7 +2,7 @@ package com.topshop.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.topshop.dao.ProductDAO;
 import com.topshop.dto.Product;
@@ -39,7 +39,7 @@ public class ProductAddProAction implements PActionInterFace {
 		
 		ActionForward forward = new ActionForward();
     	forward.setRedirect(true);
-    	forward.setPath(request.getContextPath() + "/Plist/ProjectList.product");
+    	forward.setPath(request.getContextPath() + "/Plist/ProductList.product");
 
 		return forward;
 	}

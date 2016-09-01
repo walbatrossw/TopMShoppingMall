@@ -91,6 +91,7 @@ public class MemberDao {
 	// 							로그인 체크 메서드
 	//-------------------------------------------------------------------------------
 	public String memberLoginCheck(String mId, String mPw){
+		System.out.println("로그인체크 메서드 MemberDao()");
 		String result = null;
 		
 		try {
@@ -123,8 +124,7 @@ public class MemberDao {
 		} finally{
 			close();
 		}
-		
-		
+	
 		return result;
 	}
 	//-------------------------------------------------------------------------------
@@ -138,7 +138,7 @@ public class MemberDao {
 		try {
 			conn=ds.getConnection();
 			System.out.println("getConnection");
-			//03단계 :Query실행을 위한 statement 또는 prepareStatement객체생성 끝
+			
 			pstmt = conn.prepareStatement(
 					"INSERT INTO top_member VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			System.out.println(pstmt + "<-- pstmt 1");

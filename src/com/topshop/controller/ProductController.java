@@ -10,8 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.topshop.action.ProductAddProAction;
+import com.topshop.action.ProductDeleteProAction;
+import com.topshop.action.ProductDetailFormAction;
+import com.topshop.action.ProductListProAction;
+import com.topshop.action.ProductUpdateFormAction;
+import com.topshop.action.ProductUpdateProAction;
 import com.topshop.forward.ActionForward;
 import com.topshop.inter.PActionInterFace;
+
 
 @WebServlet("/ProductController")
 public class ProductController extends HttpServlet {
@@ -44,10 +50,52 @@ public class ProductController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Pin/productAddForm.product")){
+			System.out.println("02 /Pin/productAddForm.product // ProductController.java");
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath(request.getContextPath() +"/product/productAddForm.jsp");
+		}else if(command.equals("/Plist/ProductList.product")){
+			System.out.println("03 /Plist/ProductList.product // ProductController.java");
+			action = new  ProductListProAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Pdel/productDelete.product")){
+			System.out.println("04 //Pdel/productDelete.product // ProductController.java");
+			action = new  ProductDeleteProAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Pup/productUpdate.product")){
+			System.out.println("04 /Pup/productUpdate.product// ProductController.java");
+			action = new  ProductUpdateProAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Pup/productUpdateForm.product")){
+			System.out.println("04 /Pup/productUpdateForm.product // ProductController.java");
+			action = new  ProductUpdateFormAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Pdeta/productDetail.product")){
+			System.out.println("04 /Pdeta/productDetail.product // ProductController.java");
+			action = new  ProductDetailFormAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+
 		
 		if(forward != null){
 			if(forward.isRedirect()){

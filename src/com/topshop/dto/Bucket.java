@@ -1,5 +1,7 @@
 package com.topshop.dto;
-
+//------------------------------------------------------------
+//						장바구니 VO
+//------------------------------------------------------------
 public class Bucket {
 	private String bCode = null;
 	private String pCode = null;
