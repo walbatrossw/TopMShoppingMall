@@ -10,6 +10,16 @@
         <script src="<%=request.getContextPath()%>/js/wow.min.js"></script>
         <script src="<%=request.getContextPath()%>/js/custom.js"></script>
     <head>
+    <script>
+    	$(document).ready(function(){
+    		$('#closebtn').click(function(){
+    			 console.log("aa");
+    			 location.href = "<%=request.getContextPath()%>/Member/memberLogout.member";
+    			 
+    		});
+    	});
+    	
+    </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>쇼핑몰 </title>
@@ -67,12 +77,13 @@
                                 <li><a href="#">Wishlist</a></li>
                                 <li><a href="#">Cart</a></li>
                                 <li><a href="#">Checkout</a></li>
-                                <c:if test="${sessionScope.member == null }">                                             
+                                <%-- <c:if test="${sessionScope.member == null }">                                             
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberLogin.member"><i class="pe-7s-lock"></i>로그인/회원가입</a></li>
                                 </c:if>                           
 							 	<c:if test="${sessionScope.member != null }">
                                		<li><a href="${pageContext.request.contextPath}/Member/memberLogout.member" >${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
-                				</c:if>
+                				</c:if> --%>
+                				<li><a href="#" data-toggle="modal" data-target="#myModal">${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
                             </ul>
                         </div>
                     </div>
@@ -138,7 +149,7 @@
           				<p>로그아웃 되었습니다.</p>
         			</div>
         			<div class="modal-footer">
-          				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          				<button type="button" class="btn btn-default" id="closebtn" data-dismiss="modal">Close</button>
         			</div>
       			</div>
     		</div>
