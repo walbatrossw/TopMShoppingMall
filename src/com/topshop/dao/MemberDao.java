@@ -106,16 +106,10 @@ public class MemberDao {
 			System.out.println(pstmt);
 			
 			if(rs.next()){
-					
-				if(rs.getString("m_pw").equals(mPw)){
-					result = "로그인성공";
-				}else{
-					result = "비밀번호불일치";
-				}
-					
-				}else{
-					result = "아이디불일치";
-				}
+				result = "로그인성공";
+			}else{
+				result = "로그인실패";
+			}
 				
 			return result;
 		} catch (SQLException e) {

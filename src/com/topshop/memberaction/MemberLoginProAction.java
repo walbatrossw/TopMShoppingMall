@@ -26,7 +26,7 @@ public class MemberLoginProAction implements MActionInterFace{
 		String result = memberDao.memberLoginCheck(mId, mPw);
 		MemberForward forward = new MemberForward();
 		if(result.equals("로그인성공")){
-			System.out.println("성공");
+			System.out.println(result);
 			Member member = new Member();
 			member = memberDao.memberLogin(mId);
 			HttpSession session = request.getSession();
@@ -34,11 +34,12 @@ public class MemberLoginProAction implements MActionInterFace{
 			
 			forward.setRedirect(true);
 			forward.setPath(request.getContextPath() + "/main.jsp");
-			
-		}else if(result.equals("비밀번호불일치")){
-			
-		}else if(result.equals("아이디불일치")){
-			
+
+		}else if(result.equals("로그인실패")){
+			System.out.println(result);
+			request.setAttribute("loginResult", result);
+			forward.setRedirect(false);
+			forward.setPath("/member/login/memberLogin.jsp");
 		}
 		
 		

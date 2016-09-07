@@ -12,7 +12,7 @@
     <head>
     <script>
     	$(document).ready(function(){
-    		$('#closebtn').click(function(){
+    		$('.btn-logout').click(function(){
     			 console.log("aa");
     			 location.href = "<%=request.getContextPath()%>/Member/memberLogout.member";
     			 
@@ -77,13 +77,13 @@
                                 <li><a href="#">Wishlist</a></li>
                                 <li><a href="#">Cart</a></li>
                                 <li><a href="#">Checkout</a></li>
-                                <%-- <c:if test="${sessionScope.member == null }">                                             
+                                <c:if test="${sessionScope.member == null }">                                             
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberLogin.member"><i class="pe-7s-lock"></i>로그인/회원가입</a></li>
                                 </c:if>                           
 							 	<c:if test="${sessionScope.member != null }">
-                               		<li><a href="${pageContext.request.contextPath}/Member/memberLogout.member" >${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
-                				</c:if> --%>
-                				<li><a href="#" data-toggle="modal" data-target="#myModal">${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
+                               		<li><a href="#" data-toggle="modal" data-target="#myModal">${sessionScope.member.mName }님 로그인 / 로그아웃</a></li>
+                				</c:if>
+                		
                             </ul>
                         </div>
                     </div>
@@ -138,6 +138,7 @@
 	            </div><!-- end of /.container -->
 	        </section><!-- end of /.news letter section -->
         </header>
+        
         <div class="modal fade" id="myModal" role="dialog">
     		<div class="modal-dialog modal-sm">
      			<div class="modal-content">
@@ -146,10 +147,10 @@
           				<h4 class="modal-title">로그아웃</h4>
         			</div>
        				<div class="modal-body">
-          				<p>로그아웃 되었습니다.</p>
+          				<p>${sessionScope.member.mName }님 로그아웃 되었습니다.</p>
         			</div>
         			<div class="modal-footer">
-          				<button type="button" class="btn btn-default" id="closebtn" data-dismiss="modal">Close</button>
+          				<button type="button" class="btn btn-logout" data-dismiss="modal">Close</button>
         			</div>
       			</div>
     		</div>
