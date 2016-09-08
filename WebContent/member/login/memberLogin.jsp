@@ -39,8 +39,8 @@
 		});
 	</script>
 </c:if>
-<div class="container">
-	<div class="login">
+<section class="login">
+	<div>
 		<form id="LoginForm" action="${pageContext.request.contextPath}/Member/memberLoginPro.member" method="post">	
 			<div>
 				<input type="text" name="mId" id="memberId" class="text" placeholder="ID"/><br/>
@@ -61,7 +61,7 @@
 			
 		</form>
 	</div>
-</div>
+</section>
 <div class="modal fade" id="loginModal" role="dialog">
   	<div class="modal-dialog modal-sm">
    		<div class="modal-content">

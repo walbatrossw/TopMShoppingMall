@@ -1,24 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <jsp:include page="/module/head.jsp"/>
-<body class="container">
-	<br>
-	회원 리스트
-	<br>
+<section class="memberList">
+<div>
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>권한</th>
-				<th>주소</th>
-				<th>나이</th>
-				<th>연락처</th>
-				<th>이메일</th>
-				<th>수정</th>
-				<th>삭제</th>
+				<th class="col-sm-1">아이디</th>
+				<th class="col-sm-1">이름</th>
+				<th class="col-sm-1">권한</th>
+				<th class="col-sm-1">주소</th>
+				<th class="col-sm-1">나이</th>
+				<th class="col-sm-1">연락처</th>
+				<th class="col-sm-1">이메일</th>
+				<th class="col-sm-1">수정</th>
+				<th class="col-sm-1">삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,6 +35,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
+</div>
+</section>
 <jsp:include page="/module/footer.jsp"/>
 </body>
 </html>
