@@ -12,6 +12,7 @@ public class ProductUpdateFormAction implements PActionInterFace {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		ActionForward forward = new ActionForward();
 		
 		String pCode = request.getParameter("pCode");
@@ -21,7 +22,8 @@ public class ProductUpdateFormAction implements PActionInterFace {
 		Product product =dao.productSelectforUpdate(pCode);
 		
 		request.setAttribute("product",product);
-	   	forward.setRedirect(false);
+	   	
+		forward.setRedirect(false);
    		forward.setPath("/product/productUpdateForm.jsp");
    		return forward;
 	

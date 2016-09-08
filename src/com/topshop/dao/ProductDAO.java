@@ -32,6 +32,28 @@ public class ProductDAO {
 			return;
 		}
 	}
+	
+	//productUpdate
+		public void productUpdate(Product product) throws SQLException, ClassNotFoundException{
+			System.out.println("05 productUpdate ProductDAO.java");
+			conn=ds.getConnection();
+			pstmt = conn.prepareStatement("UPDATE TOP_PRODUCT SET p_name=?,p_cate=?,p_price=?,p_count=?,p_detail=? WHERE p_code=?");
+			System.out.println(pstmt + "<-- pstmt 1");
+			
+			pstmt.setString(1, product.getpName());
+			pstmt.setString(2, product.getpCate());	
+			pstmt.setInt(3, product.getpPrice());
+			pstmt.setInt(4, product.getpCount());
+			pstmt.setString(5, product.getpDetail());
+			pstmt.setString(6,product.getpCode() );	
+			
+			System.out.println(pstmt + "<-- pstmt 2");
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+		}
 	//productSelectforUpdate
 	public Product productSelectforUpdate(String pCode) throws ClassNotFoundException, SQLException{
 		System.out.println(" mSelectforUpdate Gdao.java");
@@ -61,6 +83,7 @@ public class ProductDAO {
 	//productDelete
 	public void productDelete(String pCode) throws SQLException, ClassNotFoundException{
 		System.out.println("06 productDelete productDao.java");
+		System.out.println(pCode);
 		conn=ds.getConnection();
 		pstmt = conn.prepareStatement(
 				"DELETE FROM TOP_PRODUCT WHERE p_code=?");
@@ -70,6 +93,43 @@ public class ProductDAO {
 		pstmt.close();
 		conn.close();
 	}
+	
+	//select for detail
+	
+	public Product productSelectforDetail(String pCode) throws ClassNotFoundException, SQLException{
+		System.out.println(pCode+" <<<<<<productSelectforDetail Gdao.java");
+		
+		
+		conn=ds.getConnection();
+		pstmt = conn.prepareStatement(
+				"SELECT p.p_code as  p_code, p.p_cate as p_cate, p.p_name as p_name, p.p_price as p_price,p.p_date as p_date, "
+				+ "p.p_detail as p_detail,p.p_count as p_count, m.m_id as p_id, m.m_name as p_mname, m.m_phone as p_phone "
+				+ "FROM top_member m, top_product p "
+				+ "WHERE p.p_code = ?");
+	
+		pstmt.setString(1, pCode);
+		rs = pstmt.executeQuery();	
+		if(rs.next()){
+			product = new Product();
+			
+			product.setpCode(rs.getString("p_code"));
+			product.setpName(rs.getString("p_name"));
+			product.setmId(rs.getString("p_id"));
+			product.setpCate(rs.getString("p_cate"));
+			product.setpDetail(rs.getString("p_detail"));
+			product.setpPrice(rs.getInt("p_price"));
+			product.setpDate(rs.getString("p_date"));
+			product.setpCount(rs.getInt("p_count"));
+			product.setmName(rs.getString("p_mname"));
+			product.setmPhone(rs.getString("p_phone"));
+			
+		}
+		rs.close();
+		pstmt.close();
+		conn.close();		
+		return product;
+	}
+	
 	//allselect
 	public  ArrayList<Product> allselect(String mId) throws SQLException,ClassNotFoundException{
 		System.out.println("02 allselect Productdao.java");

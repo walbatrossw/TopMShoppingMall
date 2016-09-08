@@ -5,12 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<title>productAddForm.jsp</title>
+<title></title>
 </head>
 <body>
-${member.mId}
-${member.mName}
-${member.mLevel }
 <jsp:include page="/module/head.jsp"/>
 <form action=" ${pageContext.request.contextPath}/Pin/productAddPro.product" method="post">
 		<input type="hidden" name="mId" value="${member.mId}" size="20" >

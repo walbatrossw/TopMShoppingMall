@@ -70,8 +70,8 @@ public class ProductController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/Pup/productUpdate.product")){
-			System.out.println("04 /Pup/productUpdate.product// ProductController.java");
+		}else if(command.equals("/Pup/productUpdatePro.product")){
+			System.out.println("04 /Pup/productUpdatePro.product// ProductController.java");
 			action = new  ProductUpdateProAction();
 			try {
 				forward=action.execute(request, response);

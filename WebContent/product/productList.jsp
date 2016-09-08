@@ -23,9 +23,6 @@
 				<th>판매자아이디</th>
 				<th>판매자이름</th>
 				<th>판매자연락처</th>
-				<c:if test="${member.mLevel==1 or member.mLevel==2}">
-				<th>수정</th><th>삭제</th>
-				</c:if>
 			</tr>
 			</thead>
 			<c:forEach var ="product" items = "${productArray}">
@@ -39,22 +36,16 @@
 					<td>${product.pCount}</td>
 					<td>${product.mId}</td>
 					<td>${product.mName}</td>
-					<td>${product.mPhone}</td>
-				<c:if test="${member.mLevel==1 or member.mLevel==2}">
-					<td>
-						<a href=" ${pageContext.request.contextPath}/Pup/productUpdateForm.product?pCode=${product.pCode}">수정클릭</a>			
-					</td>
-					<td>
-						<a href=" ${pageContext.request.contextPath}/Pdel/productDelete.product?pCode=${product.pCode}">삭제클릭</a>			
-					</td>
-				</c:if>			
+					<td>${product.mPhone}</td>		
 				</tr>
 			</c:forEach>
 				<tr>
 					<td colspan = "10">
-				<c:if test ="${member.mLevel==1||member.mLevel==2}">
-					<a href=" ${pageContext.request.contextPath}/Pin/productAddForm.product">상품등록하기</a>
-				 </c:if> 
+						<c:if test ="${member.mLevel==1||member.mLevel==2}">
+							<a href=" ${pageContext.request.contextPath}/Pin/productAddForm.product">
+							[상품등록하기]
+							</a>
+						 </c:if> 
 					</td>
 				<tr>
 		</table>
