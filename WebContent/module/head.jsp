@@ -61,11 +61,11 @@
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 회원관리</span></a></li>
                                 </c:if>
                                 <c:if test="${sessionScope.member.mLevel == 1 }">
-                                	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>
-                                	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 상품등록</span></a></li>
+                                	<li><a href="${pageContext.request.contextPath}/Member/memberUpdate.member"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>
+                                	<li><a href="${pageContext.request.contextPath}/Plist/ProductList.product"><i class="pe-7s-smile"></i><span> 상품등록</span></a></li>
                                 </c:if>
                                 <c:if test="${sessionScope.member.mLevel == 2 }">
-                                	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>                       
+                                	<li><a href="${pageContext.request.contextPath}/Member/memberUpdate.member"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>                       
                                 </c:if>
                             </ul>
                         </div>
@@ -102,13 +102,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><b>M</b>art</a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp"><b>M</b>art</a>
                     </div>
                     
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="<%=request.getContextPath()%>/main.jsp">Home</a></li>
+                            <li class="active"><a href="${pageContext.request.contextPath}/main.jsp">Home</a></li>
                             <li><a href="#">About Us</a></li>
                             <li><a href="${pageContext.request.contextPath}/Boards/Admin/BoardList.bo">게시판</a></li>
                             <li><a href="${pageContext.request.contextPath}/Plist/ProductList.product">상품관리</a></li>

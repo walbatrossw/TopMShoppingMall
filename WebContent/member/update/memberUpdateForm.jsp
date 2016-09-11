@@ -6,7 +6,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script>
-	$(document).ready(function(){
+	/* $(document).ready(function(){
 		$('#memberId').focus();
 		$('#addBtn').click(function(){
 			if($('#memberId').val() == '' || !(isNaN($('#memberId').val()))){
@@ -33,6 +33,12 @@
 				$('#memberForm').submit();
 			}
 		});
+	}); */
+	$(document).ready(function(){
+		$('#memberPw').focus();
+		$('#addBtn').click(function(){
+			$('#updateForm').submit();
+		});
 	});
 </script>
 <section class="memberUpdate">
@@ -40,11 +46,11 @@
 	<div class="row">
 		<!-- <div class="col-md-6"> -->
 		<h1>회원정보 수정</h1>
-				<form class="form-horizontal" id="updateForm" action="${pageContext.request.contextPath}/Member/memberInsertAction.member" method="post">
+				<form class="form-horizontal" id="updateForm" action="${pageContext.request.contextPath}/Member/memberUpdateAction.member" method="post">
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="id">I D : </label>
-						<input type="text" name="mId" class="form-control" id="memberId"/><br/>
+						<input type="text" name="mId" class="form-control" id="memberId" value="${sessionScope.member.mId }" readonly="readonly" /><br/>
 						<span id="idHelper"></span>
 					</div>
 					
@@ -56,7 +62,7 @@
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="name">이름 : </label>
-						<input type="text" name="mName" class="form-control" id="memberName"/><br/>
+						<input type="text" name="mName" class="form-control" id="memberName" value="${sessionScope.member.mName }"/><br/>
 						<span id="nameHelper"></span>
 					</div>
 					
@@ -71,25 +77,25 @@
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="age">나이 : </label>
-						<input type="text" name="mAge" class="form-control" id="memberAge"/><br/>
+						<input type="text" name="mAge" class="form-control" id="memberAge" value="${sessionScope.member.mAge }"/><br/>
 						<span id="ageHelper"></span>
 					</div>
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="addr">주소 : </label>
-						<input type="text" name="mAddr" class="form-control" id="memberAddr"/><br/>
+						<input type="text" name="mAddr" class="form-control" id="memberAddr" value="${sessionScope.member.mAddr }"/><br/>
 						<span id="addrHelper"></span>
 					</div>
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="phone">연락처 : </label>
-						<input type="text" name="mPhone" class="form-control" id="memberPhone"/><br/>
+						<input type="text" name="mPhone" class="form-control" id="memberPhone" value="${sessionScope.member.mPhone }"/><br/>
 						<span id="phoneHelper"></span>
 					</div>
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일 : </label>
-						<input type="text" name="mEmail" class="form-control" id="memberEmail"/><br/>
+						<input type="text" name="mEmail" class="form-control" id="memberEmail" value="${sessionScope.member.mEmail }"/><br/>
 						<span id="emailHelper"></span>
 					</div>
 					

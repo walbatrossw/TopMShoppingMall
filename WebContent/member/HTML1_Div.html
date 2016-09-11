@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	/* 이미지 태그 */
+	img {
+		/* div 태그 가로 세로 길이에 따라가도록 설정 */
+		width: 100%;
+		height: 100%;
+	}
+	/* 브라우저 길이가 1025픽셀 이상인 경우 */
+	@media all and (min-width:1025px){
+	/* main */
+	.main {
+		/* 가운데 정렬 */
+		margin: auto;
+		/* 가로 길이 */
+		width: 1024px;
+		/* 좌표의 기준으로 설정 */
+		position: relative;
+	}
+	.banner {
+		/* 자유롭게 배치한다 */
+		position: absolute;
+		/* 가로 세로 길이 */
+		width: 100%;
+		height: 150px;
+		/* 좌표 */
+		top: 10px;
+	}
+	.title {
+		position: absolute;
+		width: 100%;
+		height: 150px;
+		top: 170px;
+	}
+	.menu {
+		position: absolute;
+		width: 30%;
+		height: 916px;
+		top: 330px;
+	}
+	.article1 {
+		position: absolute;
+		width: 70%;
+		height: 297px;
+		top: 330px;
+		left: 310px;
+	}
+	.article2 {
+		position: absolute;
+		width: 70%;
+		height: 297px;
+		top: 640px;
+		left: 310px;
+	}
+	.article3 {
+		position: absolute;
+		width: 70%;
+		height: 297px;
+		top: 950px;
+		left: 310px;
+	}
+	.footer {
+		position: absolute;
+		width: 100%;
+		height: 150px;
+		top: 1260px;
+	}
+	}
+
+	/* 브라우저 길이가 1024픽셀 이하인 경우 */
+	@media all and (max-width:1024px){
+	/* main */
+	.main {
+		/* 가운데 정렬 */
+		margin: auto;
+		/* 가로 길이 */
+		width: 640px;
+		/* 좌표의 기준으로 설정 */
+		position: relative;
+	}
+	.banner {
+		/* 자유롭게 배치한다 */
+		position: absolute;
+		/* 가로 세로 길이 */
+		width: 100%;
+		height: 150px;
+		/* 좌표 */
+		top: 10px;
+	}
+	.title {
+		position: absolute;
+		width: 100%;
+		height: 150px;
+		top: 170px;
+	}
+	.menu {
+		position: absolute;
+		width: 100%;
+		height: 150px;
+		top: 330px;
+	}
+	.article1 {
+		position: absolute;
+		width: 100%;
+		height: 297px;
+		top: 490px;
+	}
+	.article2 {
+		position: absolute;
+		width: 100%;
+		height: 297px;
+		top: 800px;
+	}
+	.article3 {
+		position: absolute;
+		width: 100%;
+		height: 297px;
+		top: 1110px;
+	}
+	.footer {
+		position: absolute;
+		width: 100%;
+		height: 150px;
+		top: 1420px;
+	}
+	}
+  </style>
+ </head>
+ <body>
+   <div class="main">
+     <div class="banner">
+      <img src="http://placehold.it/1024x150&text=banner"/>
+	 </div>
+	 <div class="title">
+	  <img src="http://placehold.it/1024x150&text=title"/>
+	 </div>
+	 <div class="menu">
+	  <img src="http://placehold.it/300x916&text=menu"/>
+	 </div>
+	 <div class="article1">
+	  <img src="http://placehold.it/720x300&text=article1"/>
+	 </div>
+	 <div class="article2">
+	  <img src="http://placehold.it/720x300&text=article2"/>
+	 </div>
+	 <div class="article3">
+	  <img src="http://placehold.it/720x300&text=article3"/>
+	 </div>
+	 <div class="footer">
+	  <img src="http://placehold.it/1024x150&text=footer"/>
+	 </div>
+   </div>
+ </body>
+</html>
+
+
+
+
+
+

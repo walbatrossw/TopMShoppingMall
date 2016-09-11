@@ -15,6 +15,7 @@ import com.topshop.memberaction.MemberInsertProAction;
 import com.topshop.memberaction.MemberListProAction;
 import com.topshop.memberaction.MemberLoginProAction;
 import com.topshop.memberaction.MemberLogoutProAction;
+import com.topshop.memberaction.MemberUpdateProAction;
 
 /**
  * Servlet implementation class MemberController
@@ -91,6 +92,20 @@ public class MemberController extends HttpServlet {
 			System.out.println("회원 리스트 MemberController.java");
 			//회원 리스트 액션
 			memberAction = new MemberListProAction();
+			try {
+				memberForward = memberAction.action(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Member/memberUpdate.member")){
+			System.out.println("회원 정보수정 화면 MemberController.java");
+			memberForward = new MemberForward();
+			memberForward.setRedirect(false);
+			memberForward.setPath("/member/update/memberUpdateForm.jsp");
+		//회원 정보수정 액션
+		}else if(command.equals("/Member/memberUpdateAction.member")){
+			System.out.println("회원 정보수정 액션 MemberController.java");
+			memberAction = new MemberUpdateProAction();
 			try {
 				memberForward = memberAction.action(request, response);
 			} catch (Exception e) {

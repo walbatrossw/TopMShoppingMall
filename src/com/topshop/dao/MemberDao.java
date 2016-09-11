@@ -31,7 +31,36 @@ public class MemberDao {
 		}
 	}
 	//-------------------------------------------------------------------------------
-	// 							로그인 처리 메서드
+	// 							회원정보 수정 처리 메서드
+	//-------------------------------------------------------------------------------
+	public int memberUpdate(Member member){
+		int result = 0;
+		try {
+			conn=ds.getConnection();
+			
+			String memberInfoSql = "UPDATE top_member SET m_pw=?, m_name=?, m_level=?, m_addr=?, m_age=?, m_phone=?, m_email=? WHERE m_id=?";
+			pstmt = conn.prepareStatement(memberInfoSql);
+			
+			pstmt.setString(8, member.getmId());
+			pstmt.setString(1, member.getmPw());
+			pstmt.setString(2, member.getmName());
+			pstmt.setInt(3, member.getmLevel());
+			pstmt.setString(4, member.getmAddr());
+			pstmt.setInt(5, member.getmAge());
+			pstmt.setString(6, member.getmPhone());
+			pstmt.setString(7, member.getmEmail());
+			
+			result = pstmt.executeUpdate();
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return result;	
+	}
+	
+	//-------------------------------------------------------------------------------
+	// 							회원정보 리스트 메서드
 	//-------------------------------------------------------------------------------
 	public ArrayList<Member> memberList(){
 		ArrayList<Member> memberList = new ArrayList<Member>();
@@ -72,7 +101,7 @@ public class MemberDao {
 		Member member = new Member();
 		conn=ds.getConnection();
 		
-		String loginSql = "SELECT m_id, m_name, m_level FROM top_member WHERE m_id=?";
+		String loginSql = "SELECT * FROM top_member WHERE m_id=?";
 		pstmt = conn.prepareStatement(loginSql);
 		pstmt.setString(1, mId);
 		
@@ -80,9 +109,15 @@ public class MemberDao {
 		System.out.println(pstmt);
 		
 		if(rs.next()){
-			member.setmId((rs.getString("m_id")));
-			member.setmName((rs.getString("m_name")));
-			member.setmLevel((rs.getInt("m_level")));
+			String mName = rs.getString("m_name");
+			int mLevel = rs.getInt("m_level");
+			String mAddr = rs.getString("m_addr");
+			int mAge = rs.getInt("m_age");
+			String mPhone = rs.getString("m_phone");
+			String mEmail = rs.getString("m_email");
+			
+			member.setmId(rs.getString("m_id")).setmName(mName).setmLevel(mLevel).setmAddr(mAddr).setmAge(mAge).setmPhone(mPhone).setmEmail(mEmail);
+			
 		}
 		
 		return member;
