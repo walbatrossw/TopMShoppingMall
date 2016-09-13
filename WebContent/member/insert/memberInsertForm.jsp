@@ -4,8 +4,7 @@
 <div id="head">
 <jsp:include page="/module/head.jsp"/>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<script>
+<!-- <script>
 	$(document).ready(function(){
 		$('#memberId').focus();
 		$('#addBtn').click(function(){
@@ -34,7 +33,7 @@
 			}
 		});
 	});
-</script>
+</script> -->
 <section class="memberInsert">
 <div class="container">
 	<div class="row">
