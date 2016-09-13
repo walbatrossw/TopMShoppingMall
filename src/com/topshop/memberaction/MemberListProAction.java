@@ -16,7 +16,7 @@ public class MemberListProAction implements MActionInterFace {
 	public MemberForward action(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ArrayList<Member> memberList = null;
 		MemberDao memberDao = new MemberDao();
-		
+		System.out.println("11");
 		memberList = memberDao.memberList();
 		
 		request.setAttribute("memberList", memberList);
@@ -25,7 +25,7 @@ public class MemberListProAction implements MActionInterFace {
 		
 		forward.setRedirect(false);
 		forward.setPath("/member/list/memberList.jsp");
-		
+		System.out.println("22");
 		return forward;
 	}
 

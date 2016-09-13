@@ -61,7 +61,7 @@
                                 	<li><a href="${pageContext.request.contextPath}/Member/memberList.member"><i class="pe-7s-smile"></i><span> 회원관리</span></a></li>
                                 </c:if>
                                 <c:if test="${sessionScope.member.mLevel == 1 }">
-                                	<li><a href="${pageContext.request.contextPath}/Member/memberUpdate.member"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>
+                                	<li><a href="${pageContext.request.contextPath}/member/mypage/myPage.jsp"><i class="pe-7s-smile"></i><span> 마이페이지</span></a></li>
                                 	<li><a href="${pageContext.request.contextPath}/Plist/ProductList.product"><i class="pe-7s-smile"></i><span> 상품등록</span></a></li>
                                 </c:if>
                                 <c:if test="${sessionScope.member.mLevel == 2 }">

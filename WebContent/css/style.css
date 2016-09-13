@@ -1508,14 +1508,6 @@ footer.footer p a{
     .blog-item {
         margin-bottom: 30px;
     }
-    .memberList{
-		width: 60%;
-		height: 100%;
-		margin-left: 10%;
-		text-align: center;
-	}
-
-
 
 }
 
@@ -1558,13 +1550,6 @@ footer.footer p a{
         top: 7%;
         z-index: 999;
     }
-    .memberList{
-		width: 60%;
-		height: 100%;
-		box-sizing: border-box;
-		margin-left: 10%;
-		text-align: center;
-	}
    
 }
 
@@ -1609,13 +1594,6 @@ footer.footer p a{
 	width: 150px;
 	background-color: #1abc9c;
 	color: white;
-}
-.memberList{
-	width: 60%;
-	height: 100%;
-	box-sizing: border-box;
-	margin-left: 20%;
-	text-align: center;
 }
 /* .memberInsert h2{
 	font-size: 48px;
@@ -1662,7 +1640,7 @@ footer.footer p a{
     position: fixed;
     left: 250px;
     width: 0;
-    height: 100%;
+    height: 80%;
     margin-left: -250px;
     overflow-y: auto;
     background: #ffffff;
@@ -1763,6 +1741,9 @@ footer.footer p a{
     }
 }
 .myPage{
+	height: 100%;
+}
+.memberList{
 	height: 100%;
 }
 
