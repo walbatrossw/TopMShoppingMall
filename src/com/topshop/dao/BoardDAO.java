@@ -285,9 +285,87 @@ public class BoardDAO {
 			}
 		return false;
 	}
-	//07 게시글 삭제
-	//08 게시글 댓글
 	
+	//07 게시글 삭제
+	public boolean boardDelete(int num){
+		
+		String board_delete_sql="delete from ADMIN_NOTICE where BOARD_num=?";
+		
+		int result=0;
+		
+		try{
+			connection = dataSource.getConnection();
+			preparedStatement=connection.prepareStatement(board_delete_sql);
+			preparedStatement.setInt(1, num);
+			result=preparedStatement.executeUpdate();
+			if(result==0)return false;
+			return true;
+		}catch(Exception ex){
+			System.out.println("boardDelete 에러 : "+ex);
+		}finally{
+			try{
+				if(preparedStatement!=null)preparedStatement.close();
+				if(connection!=null) connection.close();
+				}
+				catch(Exception ex){}
+		}
+		return false;
+	}
+	//08 게시글 댓글
+	public int boardReply(Board board){
+		
+		String board_max_sql="select max(board_num) from ADMIN_NOTICE";
+		String sql="";
+		int num=0;
+		int result=0;
+		
+		int re_ref=board.getBOARD_RE_REF();
+		int re_lev=board.getBOARD_RE_LEV();
+		int re_seq=board.getBOARD_RE_SEQ();
+		
+		try{
+			connection = dataSource.getConnection();
+			preparedStatement=connection.prepareStatement(board_max_sql);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next())num =resultSet.getInt(1)+1;
+			else num=1;
+			
+			sql="update ADMIN_NOTICE set BOARD_RE_SEQ=BOARD_RE_SEQ+1 where BOARD_RE_REF=? ";
+			sql+="and BOARD_RE_SEQ>?";
+			
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1,re_ref);
+			preparedStatement.setInt(2,re_seq);
+			result=preparedStatement.executeUpdate();
+			
+			re_seq = re_seq + 1;
+			re_lev = re_lev+1;
+			
+			sql="insert into ADMIN_NOTICE (BOARD_NUM,BOARD_NAME,BOARD_PASS,BOARD_SUBJECT,";
+			sql+="BOARD_CONTENT,BOARD_RE_REF,BOARD_RE_LEV,BOARD_RE_SEQ,";
+			sql+="BOARD_READCOUNT,BOARD_DATE) values(?,?,?,?,?,?,?,?,?,sysdate)";
+			
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, num);
+			preparedStatement.setString(2, board.getBOARD_NAME());
+			preparedStatement.setString(3, board.getBOARD_PASS());
+			preparedStatement.setString(4, board.getBOARD_SUBJECT());
+			preparedStatement.setString(5, board.getBOARD_CONTENT());
+			preparedStatement.setInt(6, re_ref);
+			preparedStatement.setInt(7, re_lev);
+			preparedStatement.setInt(8, re_seq);
+			preparedStatement.setInt(9, 0);
+			preparedStatement.executeUpdate();
+			return num;
+		}catch(SQLException ex){
+			System.out.println("boardReply 에러 : "+ex);
+		}finally{
+			if(resultSet!=null)try{resultSet.close();}catch(SQLException ex){}
+			if(preparedStatement!=null)try{preparedStatement.close();}catch(SQLException ex){}
+			if(connection!=null) try{connection.close();}catch(SQLException ex){}
+		}
+		return 0;
+	}
 	//09 게시글 글쓴이 확인
 	public boolean isBoardWriter(int num,String pass){
 		String board_sql="select * from ADMIN_NOTICE where BOARD_NUM=?";

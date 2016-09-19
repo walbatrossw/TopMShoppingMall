@@ -1,23 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
-
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-<div id="head">
-	<jsp:include page="/module/head.jsp" />
-</div>
-
 <body>
-<section class="boardInsert">
-	<div class="container">
-		<div class="row">
-			<h2>관리자 공지사항</h2>
+<div id="head">
+	<jsp:include page="/module/head.jsp"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<section>
+		<div class="container">
 			<form class="form-horizontal" action="<%=request.getContextPath()%>/Boards/Admin/InsertProAction.bo" method="post">
 				<div class="form-group" >
 					<label class="control-label col-sm-2">제목:</label>
@@ -50,11 +39,8 @@
 				</div>
 			</form>
 		</div>
-	</div>
-</section>
-</body>
-
-<div>
-	<jsp:include page="/module/footer.jsp" />
+	</section>
 </div>
+</body>
+<jsp:include page="/module/footer.jsp" />
 </html>

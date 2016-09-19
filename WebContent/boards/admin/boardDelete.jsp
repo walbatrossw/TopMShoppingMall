@@ -1,31 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	int num=Integer.parseInt(request.getParameter("num"));
+	int num = Integer.parseInt(request.getParameter("num"));
 %>
-<html>
+<!DOCTYPE html>
+<html class="no-js" lang="ko">
+
 <head>
-<title>°ü¸®ÀÚ °Ô½ÃÆÇ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
+<div id="head">
+	<jsp:include page="/module/head.jsp" />
+</div>
 <body>
-<form name="deleteForm" action="./BoardDeleteAction.bo?num=<%=num %>" 
-	method="post">
-<table border=1>
-<tr>
-	<td>
-		<font size=2>±Û ºñ¹Ğ¹øÈ£ : </font>
-	</td>
-	<td>
-		<input name="BOARD_PASS" type="password">
-	</td>
-</tr>
-<tr>
-	<td colspan=2 align=center>
-		<a href="javascript:deleteForm.submit()">»èÁ¦</a>
-		&nbsp;&nbsp;
-		<a href="javascript:history.go(-1)">µ¹¾Æ°¡±â</a>
-	</td>
-</tr>
-</table>
-</form>
+	<section class="boardDelete">
+		<div class="container">
+			<div class="row">
+				<h2>ê´€ë¦¬ì ê³µì§€ì‚¬í•­</h2>
+				<form name="deleteForm" action="<%=request.getContextPath()%>/Boards/Admin/BoardDeleteAction.bo?num=<%=num%>" method="post">
+					<table border=1>
+						<tr>
+							<td><font size=2>ê¸€ ë¹„ë°€ë²ˆí˜¸ : </font></td>
+							<td><input name="BOARD_PASS" type="password"></td>
+						</tr>
+						<tr>
+							<td colspan=2 align=center>
+								<a href="javascript:deleteForm.submit()">ì‚­ì œ</a> &nbsp;&nbsp; 
+								<a href="javascript:history.go(-1)">ëŒì•„ê°€ê¸°</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
+
+<div>
+	<jsp:include page="/module/footer.jsp" />
+</div>
 </html>

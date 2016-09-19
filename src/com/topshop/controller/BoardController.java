@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.topshop.boardadminaction.BoardDeleteAction;
 import com.topshop.boardadminaction.BoardDetailAction;
 import com.topshop.boardadminaction.BoardInsertProAction;
 import com.topshop.boardadminaction.BoardListAction;
 import com.topshop.boardadminaction.BoardModifyAction;
 import com.topshop.boardadminaction.BoardModifyView;
+import com.topshop.boardadminaction.BoardReplyAction;
+import com.topshop.boardadminaction.BoardReplyView;
 import com.topshop.forward.BoardActionForward;
 import com.topshop.inter.BoardActionInterface;
 
@@ -96,8 +99,38 @@ public class BoardController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}
 		
+		}else if(command.equals("/Boards/Admin/BoardDeleteView.bo")){
+			System.out.println("03_07 조건문내(게시글삭제화면) /Boards/Admin/BoardDeleteView.bo IN BoardController.java");
+			forward = new BoardActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/boards/admin/boardDelete.jsp");
+		
+		}else if(command.equals("/Boards/Admin/BoardDeleteAction.bo")){
+			System.out.println("03_08 조건문내(게시글삭제처리) /Boards/Admin/BoardDeleteAction.bo IN BoardController.java");
+			action = new BoardDeleteAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Boards/Admin/BoardReplyView.bo")){
+			System.out.println("03_09 조건문내(게시글답글화면) /Boards/Admin/BoardReplyView.bo IN BoardController.java");
+			action = new BoardReplyView();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Boards/Admin/BoardReplyAction.bo")){
+			System.out.println("03_09 조건문내(게시글답글처리) /Boards/Admin/BoardReplyAction.bo IN BoardController.java");
+			action = new BoardReplyAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 		// 02단계 : 포워드 할 것인가? 리다이렉트 할 것인가?
 		if (forward != null) {

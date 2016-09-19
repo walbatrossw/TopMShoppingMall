@@ -49,7 +49,7 @@ public class BoardModifyAction implements BoardActionInterface {
 		   	 System.out.println("게시판 수정 완료");
 		   	 
 		   	 forward.setRedirect(true);
-		   	 forward.setPath("/boards/admin/boardView.jsp?num="+boarddata.getBOARD_NUM());
+		   	 forward.setPath(request.getContextPath()+"/Board/Admin/BoardDetailAction.bo?num="+boarddata.getBOARD_NUM());
 		   	 return forward;
 	   	 }catch(Exception ex){
 	   			ex.printStackTrace();	 
