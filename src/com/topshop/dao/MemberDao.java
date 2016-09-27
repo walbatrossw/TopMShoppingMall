@@ -23,7 +23,8 @@ public class MemberDao {
 		try{
 			Context init = new InitialContext();
 			System.out.println(init + "<-- init MemberDao() ");
-	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc/Mysql");
+	//  	    ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 	  		
 		}catch(Exception ex){
 			System.out.println("DB 연결 실패 : " + ex);

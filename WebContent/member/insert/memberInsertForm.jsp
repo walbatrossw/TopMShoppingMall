@@ -4,7 +4,7 @@
 <div id="head">
 <jsp:include page="/module/head.jsp"/>
 </div>
-<!-- <script>
+<script>
 	$(document).ready(function(){
 		$('#memberId').focus();
 		$('#addBtn').click(function(){
@@ -33,7 +33,7 @@
 			}
 		});
 	});
-</script> -->
+</script>
 <section class="memberInsert">
 <div class="container">
 	<div class="row">
