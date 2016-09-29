@@ -16,7 +16,7 @@
          	factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory" 
          	driverClassName="com.mysql.jdbc.Driver" 
          	password="1234" 
-         	username="MShop" 
+         	username="TOP" 
          	type="javax.sql.DataSource" 
          	auth="Container" 
          	name="jdbc/Mysql"/>  
