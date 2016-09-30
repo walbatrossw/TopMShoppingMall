@@ -41,7 +41,7 @@
 			</c:forEach>
 				<tr>
 					<td colspan = "10">
-						<c:if test ="${member.mLevel==1||member.mLevel==2}">
+						<c:if test ="${member.mLevel==0||member.mLevel==1}">
 							<a href=" ${pageContext.request.contextPath}/Pin/productAddForm.product">
 							[상품등록하기]
 							</a>

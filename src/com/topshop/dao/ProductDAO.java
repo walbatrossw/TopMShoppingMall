@@ -24,8 +24,10 @@ public class ProductDAO {
 	public ProductDAO(){
 		try{
 			Context init = new InitialContext();
-			System.out.println(init + "<-- init Mdao ");
-	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+			System.out.println(init + "<-- init productDao() ");
+	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc/Mysql");
+	  	    // 오라클
+	  	   // ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 	  		
 		}catch(Exception ex){
 			System.out.println("DB 연결이 안되요.. " + ex);
@@ -178,7 +180,7 @@ public class ProductDAO {
 		
 		conn=ds.getConnection();
 		pstmt = conn.prepareStatement(
-				"insert into TOP_PRODUCT values(?,?,?,?,?,sysdate,?,?)");
+				"insert into TOP_PRODUCT values(?,?,?,?,?,now(),?,?)");
 		
 		pstmt.setString(1,product.getpCode() );	
 		pstmt.setString(2, product.getpCate());

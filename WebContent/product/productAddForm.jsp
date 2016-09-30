@@ -13,7 +13,7 @@
 		<input type="hidden" name="mId" value="${member.mId}" size="20" >
 		<div class="container">
 			<h2>상품등록</h2>
-			<table border="1" class="table">
+			<table border="1" class="table" enctype="multipart/form-data">
 				<tr>
 					<td>상품코드</td>
 					<td><input type="text" name="productCode" size="20"></td>

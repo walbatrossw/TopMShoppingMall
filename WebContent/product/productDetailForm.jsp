@@ -121,7 +121,7 @@
 			<tr align="center" valign="middle">
 				<td colspan="5">
 					<font size=2>
-					<c:if test="${member.mLevel==1 or member.mLevel==2}">
+					<c:if test="${member.mLevel==0 or member.mLevel==1}">
 						<a href=" ${pageContext.request.contextPath}/Pup/productUpdateForm.product?pCode=${productDetail.pCode}">
 							[수정]
 						</a>&nbsp;&nbsp;
