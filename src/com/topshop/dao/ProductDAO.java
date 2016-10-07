@@ -10,7 +10,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.mysql.jdbc.Statement;
 import com.topshop.dto.Product;
+import com.topshop.dto.ProductImgs;
 
 public class ProductDAO {
 
@@ -19,6 +21,7 @@ public class ProductDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	Product product;
+	ProductImgs productImgs;
 	ArrayList<Product> productArray = new ArrayList<Product>();
 	
 	public ProductDAO(){
@@ -33,6 +36,42 @@ public class ProductDAO {
 			System.out.println("DB 연결이 안되요.. " + ex);
 			return;
 		}
+	}
+	
+	public ProductImgs selectImgs(String pCode) throws SQLException, ClassNotFoundException{
+		conn=ds.getConnection();
+		pstmt = conn.prepareStatement("select * from top_product_image where p_code=?");
+		pstmt.setString(1, pCode);
+		rs = pstmt.executeQuery();	
+		if(rs.next()){
+			productImgs = new ProductImgs();
+			productImgs.setImageCode(rs.getInt("image_code"));
+			productImgs.setImageName(rs.getString("image_name"));
+			productImgs.setImageType(rs.getString("image_type"));
+			productImgs.setImageExt(rs.getString("image_ext"));
+			productImgs.setImageSize(rs.getLong("image_size"));
+		}
+		rs.close();
+		pstmt.close();
+		conn.close();		
+		return productImgs;
+		
+	}
+	
+	public void productImg(ProductImgs productImgs) throws SQLException, ClassNotFoundException{
+		conn=ds.getConnection();
+		String fileUploadSql = "insert into top_product_image (P_code, image_name, image_size, image_type,image_ext) values(?,?,?,?,?)";
+		pstmt = conn.prepareStatement(fileUploadSql);
+		pstmt.setInt(1, productImgs.getpCode());
+		pstmt.setString(2, productImgs.getImageName());
+		pstmt.setFloat(3, productImgs.getImageSize());
+		pstmt.setString(4, productImgs.getImageType());
+		pstmt.setString(5, productImgs.getImageExt());
+		
+		pstmt.executeUpdate();
+		
+		pstmt.close();
+		conn.close();
 	}
 	
 	//productUpdate
@@ -174,25 +213,33 @@ public class ProductDAO {
 		return productArray;
 	}
 	
-	public void productAdd(Product product) throws SQLException, ClassNotFoundException{
+	public int productAdd(Product product) throws SQLException, ClassNotFoundException{
 		System.out.println("01_02 gInsert Gdao.java 제발..........................");
 		System.out.println(product.getpCode()+"<<<<<<<<<<<<<<<<<<<<<<<<<<");
-		
+		String sql = "insert into TOP_PRODUCT(P_CATE, P_NAME, P_PRICE, P_COUNT, P_DATE, P_DETAIL, M_ID) values(?,?,?,?,now(),?,?)";
 		conn=ds.getConnection();
 		pstmt = conn.prepareStatement(
-				"insert into TOP_PRODUCT values(?,?,?,?,?,now(),?,?)");
+				sql,Statement.RETURN_GENERATED_KEYS);
 		
-		pstmt.setString(1,product.getpCode() );	
-		pstmt.setString(2, product.getpCate());
-		pstmt.setString(3, product.getpName());
-		pstmt.setInt(4, product.getpPrice());
-		pstmt.setInt(5, product.getpCount());
-		pstmt.setString(6, product.getpDetail());
-		pstmt.setString(7, product.getmId());
+		pstmt.setString(1, product.getpCate());
+		pstmt.setString(2, product.getpName());
+		pstmt.setInt(3, product.getpPrice());
+		pstmt.setInt(4, product.getpCount());
+		pstmt.setString(5, product.getpDetail());
+		pstmt.setString(6, product.getmId());
 	
 		System.out.println(pstmt + "<-- pstmt productAdd ProductDAO.java");
 		pstmt.executeUpdate();
+		ResultSet resultSet = pstmt.getGeneratedKeys();
+		int  lastKey = 0;
+		if(resultSet.next()){
+			lastKey = resultSet.getInt(1);
+			System.out.println("다시 받아온 프라이머리키 >>>"+lastKey);
+		}
+		
+		
 		pstmt.close();
 		conn.close();
+		return lastKey;
 	}
 }

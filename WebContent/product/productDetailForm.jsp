@@ -4,139 +4,74 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 <jsp:include page="/module/head.jsp"/>
 
 <div class="container">
-
-		<table width="100%" border="1" class="table">
-			<tr align="center" valign="middle">
-				<td colspan="5"><h2>상품상세보기</h2></td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">상품코드&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.pCode }
-				</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">상품명&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.pName }
-				</td>
-			</tr>
-			
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">가격&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.pPrice }
-				</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">수량&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.pCount}
-				</td>
-			</tr>
-			
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">카테고리&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.pCate }
-				</td>
-			</tr>
-			
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">등록일&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.pDate }
-				</td>
-			</tr>
-			
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">판매자아이디&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.mId }
-				</td>
-			</tr>
-			
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">판매자연락처&nbsp;&nbsp;</div>
-				</td>
-				
-				<td style="font-family:돋음; font-size:12">
-				${productDetail.mPhone }
-				</td>
-			</tr>
-			
-			<tr bgcolor="cccccc">
-				<td colspan="2" style="height:1px;">
-				</td>
-			</tr>
-			
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">내용</div>
-				</td>
-				<td style="font-family:돋음; font-size:12">
-					<table border=0 width=490 height=250 style="table-layout:fixed">
-						<tr>
-							<td valign=top style="font-family:돋음; font-size:12">
-							${productDetail.pDetail }
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr bgcolor="cccccc">
-				<td colspan="2" style="height:1px;"></td>
-			</tr>
-			<tr><td colspan="2">&nbsp;</td></tr>
-			
-			
-			<tr align="center" valign="middle">
-				<td colspan="5">
-					<font size=2>
-					<c:if test="${member.mLevel==0 or member.mLevel==1}">
-						<a href=" ${pageContext.request.contextPath}/Pup/productUpdateForm.product?pCode=${productDetail.pCode}">
-							[수정]
-						</a>&nbsp;&nbsp;
-						<a href=" ${pageContext.request.contextPath}/Pdel/productDelete.product?pCode=${productDetail.pCode}">
-							[삭제]
-						</a>&nbsp;&nbsp;	
-							
-					</c:if>
-
-					<a href="${pageContext.request.contextPath}/Plist/ProductList.product">[목록]</a>&nbsp;&nbsp;
-					</font>
-				</td>
-			</tr>
-		</table>
-	
+	<h1>상품상세보기</h1>
+	<table  class="table">
+		<tr>
+			<td >상품코드</td>
+			<td >${productDetail.pCode }</td>
+		</tr>
+		<tr>
+			<td >상품명</td>
+			<td >${productDetail.pName }</td>
+		</tr>
+		<tr>
+			<td >가격</td>
+			<td >${productDetail.pPrice }</td>
+		</tr>
+		<tr>
+			<td >수량</td>
+			<td >${productDetail.pCount}</td>
+		</tr>
+		<tr>
+			<td >카테고리</td>
+			<td >${productDetail.pCate }</td>
+		</tr>
+		<tr>
+			<td >등록일</td>
+			<td >${productDetail.pDate }</td>
+		</tr>
+		
+		<tr>
+			<td >판매자아이디</td>
+			<td >${productDetail.mId }</td>
+		</tr>
+		<tr>
+			<td >판매자연락처</td>
+			<td>${productDetail.mPhone }</td>
+		</tr>
+		<tr>
+			<td colspan="2" >내용</td>
+		</tr>
+		<tr>
+			<td colspan="2" >
+				<div>${productDetail.pDetail }</div>
+				<div><img src="../image/${productImgs.imageName}"/></div>
+			</td>
+		</tr>		
+		
+		<tr>
+			<td colspan="2" align="center">
+				<c:if test="${member.mLevel==0 or member.mLevel==1}">
+					<a href=" ${pageContext.request.contextPath}/Pup/productUpdateForm.product?pCode=${productDetail.pCode}">
+						[수정]
+					</a>&nbsp;&nbsp;
+					<a href=" ${pageContext.request.contextPath}/Pdel/productDelete.product?pCode=${productDetail.pCode}">
+						[삭제]
+					</a>&nbsp;&nbsp;	
+				</c:if>
+				<a href="${pageContext.request.contextPath}/Plist/ProductList.product">[목록]</a>&nbsp;&nbsp;
+			</td>
+		</tr>
+	</table>
 </div>
 
 </body>

@@ -12,11 +12,11 @@
        
          <Resource maxIdle="100" 
          	maxActive="500" 
-         	url="jdbc:mysql://localhost:3306/mshop?useUnicode=true&amp;characterEncoding=UTF-8" 
+         	url="jdbc:mysql://localhost:3306/mshop"
          	factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory" 
          	driverClassName="com.mysql.jdbc.Driver" 
-         	password="1234" 
-         	username="TOP" 
+            username="TOP" 
+         	password="1234"
          	type="javax.sql.DataSource" 
          	auth="Container" 
          	name="jdbc/Mysql"/>  
